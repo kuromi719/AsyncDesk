@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "node --watch index.js | npx pino-pretty"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^5.1.0",
+    "pg": "^8.23.1",
+    "@monorepo/utils": "*"
+  }
+}
