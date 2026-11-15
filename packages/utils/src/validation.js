@@ -10,3 +10,9 @@ export function validateEmail(email) {
 export function normalizeEmail(email) {
     return email.trim().toLowerCase();
 }
+
+export function isForbiddenText(text) {
+    const forbiddenWords = ["admin", "root", "superuser"];
+    const lowerCaseText = text.toLowerCase();
+    return forbiddenWords.some(word => lowerCaseText.includes(word));
+}

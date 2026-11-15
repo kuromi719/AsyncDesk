@@ -1,2 +1,2 @@
-export * as Validation from "./validation";
-export * as Hash from "./hash";
+export * as Validation from "./validation.js";
+export * as Hash from "./hash.js";

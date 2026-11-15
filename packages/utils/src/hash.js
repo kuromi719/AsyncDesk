@@ -1,3 +1,5 @@
+import argon2 from "argon2";
+
 export function makeHash(input) {
     return argon2.hash(input);
 }

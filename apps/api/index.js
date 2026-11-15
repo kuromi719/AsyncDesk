@@ -3,9 +3,12 @@ require("dotenv").config();
 const express = require("express");
 const db = require("./DBService");
 const { randomUUID } = require("node:crypto");
-const healthRoutes = require("./routes/health");
-
+const cors = require("cors");
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:3000", // this stole 30m of my life
+}));
 
 app.use(express.json());
 
@@ -22,15 +25,24 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/health", healthRoutes);
+// Routes -------------------------
+
+const healthRoutes = require("./routes/health");
+const userRegisterRoutes = require("./routes/userRegister");
+const userLoginRoutes = require("./routes/userLogin");
+
+app.use("/app/health", healthRoutes);
+app.use("/user/register", userRegisterRoutes);
+app.use("/user/login", userLoginRoutes);
+
+// ---------------------------------
 
 const pino = require('pino');
 const logger = pino();
 
 async function start() {
   try {
-    await db.initialize();
-
+    await db.query("SELECT 1");
     const port = process.env.PORT || 4000;
     app.listen(port, () => {
       logger.info(`API listening on http://localhost:${port}`);
