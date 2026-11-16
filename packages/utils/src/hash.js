@@ -1,4 +1,5 @@
 import argon2 from "argon2";
+import { createHash, randomBytes } from "node:crypto";
 
 export function makeHash(input) {
     return argon2.hash(input);
@@ -9,11 +10,13 @@ export function verifyHash(hash, input) {
 }
 
 export function generateRandomString(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
+    return randomBytes(length).toString("base64url").slice(0, length);
+}
+
+export function generateSessionToken() {
+    return randomBytes(48).toString("base64url");
+}
+
+export function generateSessionHash(token) {
+    return createHash("sha256").update(token).digest("hex");
 }

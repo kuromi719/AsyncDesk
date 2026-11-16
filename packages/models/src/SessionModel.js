@@ -26,13 +26,13 @@ class SessionModel {
     static fromDatabase(row) {
         return new SessionModel({
         id: row.id,
-        userId: row.user_id,
-        tokenHash: row.token_hash,
-        expiresAt: row.expires_at,
-        createdAt: row.created_at,
-        lastUsedAt: row.last_used_at,
-        userAgent: row.user_agent,
-        ipHash: row.ip_hash,
+        userId: row.userid,
+        tokenHash: row.tokenhash,
+        expiresAt: row.expiresat,
+        createdAt: row.createdat,
+        lastUsedAt: row.lastusedat,
+        userAgent: row.useragent,
+        ipHash: row.iphash,
         });
     }
 
@@ -40,9 +40,9 @@ class SessionModel {
         return {
         id: this.id,
         userId: this.userId,
-        tokenHash: this.tokenHash,
+        expiresAt: this.expiresAt,
         createdAt: this.createdAt,
-        updatedAt: this.updatedAt,
+        lastUsedAt: this.lastUsedAt,
         };
     }
 

@@ -21,10 +21,10 @@ class UserModel {
     return new UserModel({
       id: row.id,
       email: row.email,
-      passwordHash: row.password_hash,
-      displayName: row.display_name,
-      createdAt: row.created_at,
-      updatedAt: row.updated_at,
+      passwordHash: row.passwordhash,
+      displayName: row.displayname,
+      createdAt: row.createdat,
+      updatedAt: row.updatedat,
     });
   }
 

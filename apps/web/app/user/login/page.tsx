@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Button, Card, Input, Label, TextField } from "@heroui/react";
+import { Card } from "@heroui/react";
 
 import { NTBackground } from "../../ui/NTBackground";
 import styles from "../register/register.module.css";
+import LoginForm from "./LoginForm";
 
 export default function Login() {
   return (
@@ -19,51 +20,7 @@ export default function Login() {
           </Card.Header>
 
           <Card.Content className={styles.content}>
-            <form className={styles.form}>
-              <TextField
-                fullWidth
-                isRequired
-                name="email"
-                type="email"
-                className={styles.field}
-              >
-                <Label className={styles.label}>Email</Label>
-                <Input
-                  fullWidth
-                  type="email"
-                  autoComplete="email"
-                  placeholder="you@example.com"
-                  className={styles.input}
-                  variant="secondary"
-                />
-              </TextField>
-
-              <TextField
-                fullWidth
-                isRequired
-                name="password"
-                type="password"
-                className={styles.field}
-              >
-                <Label className={styles.label}>Password</Label>
-                <Input
-                  fullWidth
-                  type="password"
-                  autoComplete="current-password"
-                  placeholder="Enter your password"
-                  className={styles.input}
-                  variant="secondary"
-                />
-              </TextField>
-
-              <Button
-                type="submit"
-                fullWidth
-                className={styles.submitButton}
-              >
-                Sign in
-              </Button>
-            </form>
+            <LoginForm />
           </Card.Content>
 
           <Card.Footer className={styles.footer}>

@@ -8,6 +8,7 @@ const app = express();
 
 app.use(cors({
   origin: "http://localhost:3000", // this stole 30m of my life
+  credentials: true,
 }));
 
 app.use(express.json());

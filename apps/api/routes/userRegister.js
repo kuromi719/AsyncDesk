@@ -75,8 +75,8 @@ router.post("/", async (req, res) => {
     const HashedPassword = await Hash.makeHash(req.body.password)
 
     const insertQuery = `
-        INSERT INTO users (email, passwordhash, displayname)
-        VALUES ($1, $2, $3)
+        INSERT INTO users (email, passwordhash, displayname, createdat, updatedat)
+        VALUES ($1, $2, $3, NOW(), NOW())
         RETURNING id, email, displayname, createdat, updatedat;
     `; // disgusting naming..
 
@@ -105,7 +105,7 @@ router.post("/", async (req, res) => {
             message: "User registered successfully",
             user: {
                 email: newUser.email,
-                displayName: newUser.display_name,
+                displayName: newUser.displayname,
             },
             requestId: req.requestId,
         });
